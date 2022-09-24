@@ -1,7 +1,6 @@
 import { FunctionComponent, useState, ChangeEvent } from "react";
-import Item from "../5/components/Item";
 
-type items = {
+type Item = {
   id: number;
   name: string;
 };
@@ -18,7 +17,7 @@ const List = [
 
 const Task3: FunctionComponent = () => {
   const [inputValue, setInputValue] = useState("");
-  const [items, setItems] = useState(List);
+  const [items, setItems] = useState<Item[]>(List);
 
   const filteredList = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;

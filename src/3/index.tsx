@@ -1,9 +1,9 @@
 import { FunctionComponent, useState, ChangeEvent } from "react";
 
-type Item = {
+interface Item {
   id: number;
   name: string;
-};
+}
 
 const List = [
   { id: 1, name: "Item 1" },
@@ -30,23 +30,22 @@ const Task3: FunctionComponent = () => {
       setItems(List);
     }
 
-
     setInputValue(value);
   };
 
   return (
     <div>
       <label>Search Input: </label>
-      <input  value={inputValue}  onChange={filteredList}/>
+      <input value={inputValue} onChange={filteredList} />
       <br />
       <br />
       #List goes here#
       <ul>
-        {items && items.length > 0 ? (
-          items.map((item) => 
-            (<li key={item.id}>{item.name}</li>)
-          )
-        ) : <span>Not Found</span>}
+        {items.length > 0 ? (
+          items.map((item) => <li key={item.id}>{item.name}</li>)
+        ) : (
+          <span>Not Found</span>
+        )}
       </ul>
     </div>
   );

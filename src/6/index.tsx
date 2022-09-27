@@ -1,5 +1,4 @@
 import React, { useState, FunctionComponent } from "react";
-import SearchToDo from "./components/SearchToDO";
 import ToDoList from "./components/ToDoList";
 import AddToDo from "./components/AddToDo";
 import { Todo } from "./models/types";
@@ -7,6 +6,7 @@ import data from "./models/data.json";
 
 // Style
 import "./index.scss";
+import SearchToDo from "./components/SearchToDo";
 
 // Components
 /*

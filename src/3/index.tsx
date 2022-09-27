@@ -18,33 +18,29 @@ const List = [
 const Task3: FunctionComponent = () => {
   const [inputValue, setInputValue] = useState("");
   const [items, setItems] = useState<Item[]>(List);
+  const [filteredItems, setFilteredItems] = useState<Item[]>(List);
 
-  const filteredList = (e: ChangeEvent<HTMLInputElement>) => {
+
+  const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    if (value !== "") {
-      const filtered = items.filter((item) =>
-        item.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-      );
-      setItems(filtered);
-    } else {
-      setItems(List);
-    }
-
     setInputValue(value);
+    setFilteredItems(items.filter(item => item.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())))
   };
+
+  // const filteredList = () => items.filter(item => item.name.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase()));
 
   return (
     <div>
       <label>Search Input: </label>
-      <input value={inputValue} onChange={filteredList} />
+      <input value={inputValue} onChange={searchHandler} />
       <br />
       <br />
       #List goes here#
       <ul>
-        {items.length > 0 ? (
-          items.map((item) => <li key={item.id}>{item.name}</li>)
+        {!!filteredItems.length ? (
+          filteredItems.map((item) => <li key={item.id}>{item.name}</li>)
         ) : (
-          <span>Not Found</span>
+          <span>No Items</span>
         )}
       </ul>
     </div>

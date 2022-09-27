@@ -11,21 +11,21 @@ const AddToDo = ({ addTodo }: any) => {
   const newTodo = (e: any) => {
     e.preventDefault();
 
-    const newTodo = {task: value, status: 'pending'}
+    const newTodo = { task: value, status: "pending" };
     addTodo(newTodo);
-    setValue('');
-  }
+    setValue("");
+  };
 
   return (
     <form className="form" onSubmit={newTodo}>
       <label>Add:</label>
       <input
-      className="form-input"
-      type='text'
-      placeholder='Add new task'
-      value={value}
-      onChange={handleInputChange}
-      id='addTodo'
+        className="form-input"
+        type="text"
+        placeholder="Add new task"
+        value={value}
+        onChange={handleInputChange}
+        id="addTodo"
       />
     </form>
   );
